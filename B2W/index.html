@@ -8,12 +8,35 @@
     <link rel="icon" href="assets/img/favicon.ico">
     <title>Bootstrap to Wordpress</title>
 
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/font-awesome/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <header>
-
+    <header class="site-header" role="banner">
+        <div class="navbar-wrapper">
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/_"><img src="assets/img/logo.png" alt="Bootstrap to WP"></a>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="/_">Home</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="blog.html">Resources</a></li>
+                            <li><a href="blog.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
 
     <section>
