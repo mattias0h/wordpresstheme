@@ -159,6 +159,10 @@ section h3 {
     text-align: center;
 }
 
+#project-features {
+    text-align: center;
+}
+
 i.ci {
     display: inline-block;
     height: 40px;
