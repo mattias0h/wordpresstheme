@@ -37,7 +37,7 @@
 							<span class="sr-only">Toggle Navigation</span>
 							<span class="glyphicon glyphicon-option-horizontal"></span>
 						</button>
-						<a href="/" class="navbar-brand"><img src="assets/img/logo.png" alt="BootStrap Wordpress"></a>
+						<a href="/" class="navbar-brand"><img src="<?php bloginfo('stylesheet_directory');?>/assets/img/logo.png" alt="BootStrap Wordpress"></a>
 					</div>
 
 					<?php
