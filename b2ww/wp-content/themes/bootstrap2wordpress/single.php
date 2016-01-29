@@ -6,30 +6,71 @@
  *
  * @package Bootstrap_to_Wordpress
  */
-
 get_header(); ?>
+	<div class="container">
+		<div class="row" id="primary">
+			<main id="content" class="col-sm-8">
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+				<?php while (have_posts()) : the_post(); ?>
 
-		<?php
-		while ( have_posts() ) : the_post();
+					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+						<header class="entry-header">
 
-			get_template_part( 'template-parts/content', get_post_format() );
+							<?php
+							if (is_single()) {
+								the_title('<h3 class="entry-title">', '</h3>');
+							} else {
+								the_title('<h3 class="entry-title"><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h3>');
+							}
+							if ('post' === get_post_type()) : ?>
+								<div class="post-details">
+									<i class="fa fa-user"></i>
+									<?php the_author(); ?>
 
-			the_post_navigation();
+									<i class="fa fa-clock-o"></i>
+									<time><?php the_date(); ?></time>
 
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
+									<i class="fa fa-folder"></i>
+									<?php the_category(', '); ?>
 
-		endwhile; // End of the loop.
-		?>
+									<i class="fa fa-tags"></i>
+									<?php the_tags('', ', ', '') ?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+									<div class="post-comments-badge">
+										<a href="<?php comments_link(); ?>"><i class="fa fa-comments"></i><?php comments_number(0, 1, '%'); ?></a>
+									</div>
+									<?php edit_post_link('Edit', '<i class="fa fa-pencil"></i>', ''); ?>
+								</div>
+								<?php
+							endif; ?>
+						</header>
+						<?php if (has_post_thumbnail()) { ?>
+							<div class="post-image">
+								<?php the_post_thumbnail(); ?>
+							</div>
+						<?php } ?>
+						<div class="post-body">
+							<?php the_content(); ?>
+						</div>
+					</article>
+
+					<?php the_post_navigation(); ?>
+
+					<?php // If comments are open or we have at least one comment, load up the comment template.
+					if (comments_open() || get_comments_number()) :
+						comments_template();
+					endif; ?>
+
+				<?php endwhile; // End of the loop.?>
+			</main>
+			<!-- main -->
+
+			<aside class="col-sm-4">
+				<?php get_sidebar(); ?>
+			</aside>
+		</div>
+		<!-- primary -->
+	</div>
 
 <?php
-get_sidebar();
 get_footer();
