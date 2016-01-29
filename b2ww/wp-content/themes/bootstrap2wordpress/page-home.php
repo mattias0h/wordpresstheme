@@ -8,9 +8,17 @@ $prelaunch_price        =  get_post_meta(5, 'prelaunch_price', true);
 $launch_price           =  get_post_meta(5, 'launch_price', true);
 $final_price            =  get_post_meta(5, 'final_price', true);
 $course_url             =  get_post_meta(5, 'course_url', true);
-$button_text             =  get_post_meta(5, 'button_text', true);
+$button_text            =  get_post_meta(5, 'button_text', true);
 $optin_text             =  get_post_meta(5, 'optin_text', true);
 $optin_button_text      =  get_post_meta(5, 'optin_button_text', true);
+
+$income_feature_image   = get_field('income_feature_image');
+$income_section_title   = get_field('income_section_title');
+$income_section_desc    = get_field('income_section_description');
+$reason_1_title         = get_field('reason_1_title');
+$reason_1_description   = get_field('reason_1_description');
+$reason_2_title         = get_field('reason_2_title');
+$reason_2_description   = get_field('reason_2_description');
 
 get_header(); ?>
 
@@ -78,26 +86,26 @@ get_header(); ?>
             <div class="section-header">
                 <img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/icon-boost.png" alt="Chart">
 
-                <h2>How Can You Boost Your Income</h2>
+                <?php if(!empty($income_feature_image)) : ?>
+                    <img src="<?php echo $income_feature_image['url']; ?>" alt="<?php echo $income_feature_image['alt']; ?>">
+                <?php endif; ?>
+
+
+                <h2><?php echo $income_section_title; ?></h2>
             </div>
-            <p class="lead">Whether you’re a freelance designer, entrepreneur, employee for a company, code hobbyist, or
-                looking for a new career — this course gives you an immensely valuable skill that will enable you to
-                either:</p>
+            <p class="lead"><?php echo $income_section_desc; ?></p>
 
             <div class="row">
                 <div class="col-sm-6">
-                    <h3>Make money</h3>
+                    <h3><?php echo $reason_1_title; ?></h3>
 
-                    <p>So you can save up for that Hawaiian vacation you’ve been wanting, help pay off your debt, your car,
-                        your mortgage, or simply just to have bonus cash laying around.</p>
+                    <p><?php echo $reason_1_description; ?></p>
                 </div>
 
                 <div class="col-sm-6">
-                    <h3>Create a Full-Time Income</h3>
+                    <h3><?php echo $reason_2_title; ?></h3>
 
-                    <p>WordPress developers have options. Many developers make a generous living off of creating custom
-                        WordPress themes and selling them on websites like ThemeForest. Freelance designers and developers
-                        can also take on WordPress projects and make an extra $1,000 - $5,000+ per month.</p>
+                    <p><?php echo $reason_2_description; ?></p>
                 </div>
             </div>
         </div>
