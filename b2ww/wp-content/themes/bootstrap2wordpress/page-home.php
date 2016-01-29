@@ -52,7 +52,8 @@ get_header(); ?>
                 <div class="row">
 
                     <div class="col-sm-5">
-                        <img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/logo-badge.png" alt="BootStrap Wordress" class="logo">
+                        <img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/logo-badge.png"
+                             alt="BootStrap Wordress" class="logo">
                     </div>
 
                     <div class="col-sm-7 hero-text">
@@ -83,7 +84,8 @@ get_header(); ?>
                             </div>
 
                         </div>
-                        <p><a class="btn btn-lg btn-danger" href="<?php echo $course_url; ?>" role="button"><?php echo $button_text; ?></a></p>
+                        <p><a class="btn btn-lg btn-danger" href="<?php echo $course_url; ?>"
+                              role="button"><?php echo $button_text; ?></a></p>
                     </div>
 
                 </div>
@@ -99,7 +101,8 @@ get_header(); ?>
                 </div>
 
                 <div class="col-sm-4">
-                    <button class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#myModal"><?php echo $optin_button_text; ?></button>
+                    <button class="btn btn-success btn-lg btn-block" data-toggle="modal"
+                            data-target="#myModal"><?php echo $optin_button_text; ?></button>
                 </div>
             </div>
         </div>
@@ -108,10 +111,9 @@ get_header(); ?>
     <section id="boost-income">
         <div class="container">
             <div class="section-header">
-                <img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/icon-boost.png" alt="Chart">
-
-                <?php if(!empty($income_feature_image)) : ?>
-                    <img src="<?php echo $income_feature_image['url']; ?>" alt="<?php echo $income_feature_image['alt']; ?>">
+                <?php if (!empty($income_feature_image)) : ?>
+                    <img src="<?php echo $income_feature_image['url']; ?>"
+                         alt="<?php echo $income_feature_image['alt']; ?>">
                 <?php endif; ?>
 
 
@@ -156,8 +158,9 @@ get_header(); ?>
     <section id="course-features">
         <div class="container">
             <div class="section-header">
-                <?php if(!empty($features_section_image)) : ?>
-                    <img src="<?php echo $features_section_image['url']; ?>" alt="<?php echo $features_section_image['alt']; ?>">
+                <?php if (!empty($features_section_image)) : ?>
+                    <img src="<?php echo $features_section_image['url']; ?>"
+                         alt="<?php echo $features_section_image['alt']; ?>">
                 <?php endif; ?>
 
                 <h2><?php echo $features_section_title; ?></h2>
@@ -204,7 +207,8 @@ get_header(); ?>
                         <p><?php the_content(); ?></p>
                     </div>
 
-                <?php endwhile; wp_reset_query(); ?>
+                <?php endwhile;
+                wp_reset_query(); ?>
 
             </div>
 
@@ -235,20 +239,23 @@ get_header(); ?>
                         </div>
 
                         <div class="col-lg-4">
-                            <?php if(!empty($twitter_username)) : ?>
-                                <a href="https://twitter.com/<?php echo $twitter_username; ?>" target="_blank" class="badge social twitter"><i
+                            <?php if (!empty($twitter_username)) : ?>
+                                <a href="https://twitter.com/<?php echo $twitter_username; ?>" target="_blank"
+                                   class="badge social twitter"><i
                                         class="fa fa-twitter"></i></a>
                             <?php endif; ?>
 
-                            <?php if(!empty($facebook_username)) : ?>
-                                <a href="https://facebook.com/<?php echo $facebook_username; ?>" target="_blank" class="badge social facebook"><i
+                            <?php if (!empty($facebook_username)) : ?>
+                                <a href="https://facebook.com/<?php echo $facebook_username; ?>" target="_blank"
+                                   class="badge social facebook"><i
                                         class="fa fa-facebook"></i></a>
                             <?php endif; ?>
 
-                            <?php if(!empty($google_plus_username)) : ?>
-                                <a href="https://plus.google.com/<?php echo $google_plus_username; ?>" target="_blank" class="badge social gplus"><i
+                            <?php if (!empty($google_plus_username)) : ?>
+                                <a href="https://plus.google.com/<?php echo $google_plus_username; ?>" target="_blank"
+                                   class="badge social gplus"><i
                                         class="fa fa-google-plus"></i></a>
-                            <?php endif;  ?>
+                            <?php endif; ?>
                         </div>
                     </div>
 
@@ -294,61 +301,28 @@ get_header(); ?>
 
                     <h2>What People Are Saying About Brad</h2>
 
-                    <div class="row testimonial">
-                        <div class="col-sm-4">
-                            <img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/brennan.jpg" alt="Brennan">
-                        </div>
-                        <div class="col-sm-8">
-                            <blockquote>
-                                Greate video course!
-                                <cite>
-                                    &mdash; Brennan, graduate of all of Brad's courses
-                                </cite>
-                            </blockquote>
-                        </div>
-                    </div>
+                    <?php $loop = new WP_Query(array('post_type' => 'testimonial', 'orderby' => 'post_id', 'order' => 'ASC')); ?>
+                    <?php while ($loop->have_posts()) : $loop->the_post(); ?>
 
-                    <div class="row testimonial">
-                        <div class="col-sm-4">
-                            <img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/ben.png" alt="Illustratrion of a man with a moustache">
+                        <div class="row testimonial">
+                            <div class="col-sm-4">
+                                <?php
+                                if (has_post_thumbnail()) {
+                                    the_post_thumbnail(array(200, 200));
+                                }
+                                ?>
+                            </div>
+                            <div class="col-sm-8">
+                                <blockquote>
+                                    <?php the_content(); ?>
+                                    <cite>
+                                        &mdash; <?php the_title(); ?>
+                                    </cite>
+                                </blockquote>
+                            </div>
                         </div>
-                        <div class="col-sm-8">
-                            <blockquote>
-                                Greate video course!
-                                <cite>
-                                    &mdash; Ben, graduate of Build a Website from Scratch with HTML &amp; CSS
-                                </cite>
-                            </blockquote>
-                        </div>
-                    </div>
 
-                    <div class="row testimonial">
-                        <div class="col-sm-4">
-                            <img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/aj.png" alt="Illustratrion of a man with a beard">
-                        </div>
-                        <div class="col-sm-8">
-                            <blockquote>
-                                Greate video course!
-                                <cite>
-                                    &mdash; AJ, graduate of Code a Responsive Website with Bootstrap 3
-                                </cite>
-                            </blockquote>
-                        </div>
-                    </div>
-
-                    <div class="row testimonial">
-                        <div class="col-sm-4">
-                            <img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/ernest.png" alt="Illustratrion of a man with a beard">
-                        </div>
-                        <div class="col-sm-8">
-                            <blockquote>
-                                Greate video course!
-                                <cite>
-                                    &mdash; Ernest, graduate of Code Dynamic Websites with PHP
-                                </cite>
-                            </blockquote>
-                        </div>
-                    </div>
+                    <?php endwhile; ?>
                 </div>
             </div>
         </div>
