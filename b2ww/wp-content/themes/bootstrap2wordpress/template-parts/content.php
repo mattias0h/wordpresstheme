@@ -6,42 +6,53 @@
  *
  * @package Bootstrap_to_Wordpress
  */
-
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php
-			if ( is_single() ) {
-				the_title( '<h1 class="entry-title">', '</h1>' );
-			} else {
-				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-			}
+		if (is_single()) {
+			the_title('<h3 class="entry-title">', '</h3>');
+		} else {
+			the_title('<h3 class="entry-title"><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h3>');
+		}
+		if ('post' === get_post_type()) : ?>
+			<div class="post-details">
+				<i class="fa fa-user"></i>
+				<?php the_author(); ?>
 
-		if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php bootstrap2wordpress_posted_on(); ?>
-		</div><!-- .entry-meta -->
-		<?php
+				<i class="fa fa-clock-o"></i>
+				<time><?php the_date(); ?></time>
+
+				<i class="fa fa-folder"></i>
+				<?php the_category(', '); ?>
+
+				<i class="fa fa-tags"></i>
+				<?php the_tags('', ', ', '') ?>
+
+				<div class="post-comments-badge">
+					<a href="<?php comments_link(); ?>"><i class="fa fa-comments"></i><?php comments_number(0, 1, '%'); ?></a>
+				</div>
+				<!--post-comments-badge-->
+				<?php edit_post_link('Edit', '<i class="fa fa-pencil"></i>', ''); ?>
+			</div>
+			<?php
 		endif; ?>
-	</header><!-- .entry-header -->
+	</header>
+	<!-- .entry-header -->
+	<?php if (has_post_thumbnail()) { ?>
+		<div class="post-image">
+			<?php the_post_thumbnail(); ?>
+		</div>
+	<?php } ?>
+	<!--post-image-->
+	<div class="post-excerpt">
+		<?php the_excerpt(); ?>
+	</div>
+</article>
+<!--post-->
 
-	<div class="entry-content">
-		<?php
-			the_content( sprintf(
-				/* translators: %s: Name of current post. */
-				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'bootstrap2wordpress' ), array( 'span' => array( 'class' => array() ) ) ),
-				the_title( '<span class="screen-reader-text">"', '"</span>', false )
-			) );
-
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'bootstrap2wordpress' ),
-				'after'  => '</div>',
-			) );
-		?>
-	</div><!-- .entry-content -->
-
-	<footer class="entry-footer">
-		<?php bootstrap2wordpress_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
+<footer class="entry-footer">
+	<?php bootstrap_entry_footer(); ?>
+</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
