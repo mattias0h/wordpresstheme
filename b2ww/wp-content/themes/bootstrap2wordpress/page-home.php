@@ -29,10 +29,10 @@ $features_section_title = get_field('features_section_title');
 $features_section_body  = get_field('features_section_body');
 $course_feature_icon    = get_field('course_feature_icon');
 
-$project_features_title = get_field('project_feature_title');
-$project_feature_body   = get_field('project_feature_body');
-$featurette_title       = get_field('featurette_title');
-$featurette_video_link  = get_field('featurette_video_link');
+$project_features_title   = get_field('project_feature_title');
+$project_feature_body     = get_field('project_feature_body');
+$featurette_title         = get_field('featurette_title');
+$featurette_video_link    = get_field('featurette_video_link');
 $instructor_section_title = get_field('instructor_section_title');
 $instructor_name          = get_field('instructor_name');
 $bio_excerpt              = get_field('bio_excerpt');
