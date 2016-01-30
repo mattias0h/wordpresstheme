@@ -31,15 +31,13 @@
             </div>
 
             <div class="col-sm-6">
-                <nav>
-                    <ul class="list-unstyled list-inline">
-                        <li><a href="">Home</a></li>
-                        <li><a href="">Blog</a></li>
-                        <li><a href="">Resources</a></li>
-                        <li><a href="">Contact</a></li>
-                        <li class="signup-link"><a href="">Sign up now</a></li>
-                    </ul>
-                </nav>
+                <?php
+                wp_nav_menu(array(
+                    'theme-location' => 'footer',
+                    'container' => 'nav',
+                    'menu_class' => 'list-unstyled list-inline'
+                ));
+                ?>
             </div>
 
             <div class="col-sm-3">
